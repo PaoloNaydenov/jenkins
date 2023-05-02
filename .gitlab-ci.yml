@@ -1,7 +1,6 @@
 stages:
   - deploy
-tags:
-  - docker 
+
 
 deploy:
   stage: deploy
@@ -9,6 +8,8 @@ deploy:
   variables:
     DOCKER_IMAGE: "vesves4/pptt:0.0.1"
   script:
+  tags:
+    - docker
     - docker pull ""
     - docker run -d --name devop -p 5173:5173 "vesves4/pptt:0.0.1"
   only:
