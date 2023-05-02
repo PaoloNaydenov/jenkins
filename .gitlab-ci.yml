@@ -1,5 +1,7 @@
 stages:
   - deploy
+tags:
+  - docker 
 
 deploy:
   stage: deploy
