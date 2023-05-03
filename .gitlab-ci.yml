@@ -1,28 +1,29 @@
 stages:
   - build
   - deploy
-before_script:
-  - docker login -u $DOCKER_USER -p $DOCKER_PASS
+
 build:
   stage: build
   image: docker:latest
   services:
     - docker:dind
   script:
-    - docker build -t $CI_JOB_IMAGE .
-    - docker push $CI_JOB_IMAGE
-  tags:
-    - test docker shell
+    - cd /home/pnaydenov/Downloads/devops-site
+    - docker build -t paolonayednov/dev:0.1 .
+    - docker login -u "$DOCKER_USER" -p "$DOCKER_PASS"
+    - docker push paolonaydenov/dev:0.1
   only:
     - main
 
 deploy:
   stage: deploy
   image: docker:latest
+  variables:
+    DOCKER_IMAGE: "paolonaydenov/dev:0.1"
   script:
-    - docker pull "$CI_JOB_IMAGE"
-    - docker run -d --name devops -p 5173:5173 "$CI_JOB_IMAGE"
-  tags: 
-    - test docker shell
+    - docker login -u "$DOCKER_USER" -p "$DOCKER_PASS"
+    - docker pull "paolonaydenov/dev:0.1"
+    - docker run -d --name devops -p 5173:5173 "$DOCKER_IMAGE"
+    - "echo All done"
   only:
     - main
