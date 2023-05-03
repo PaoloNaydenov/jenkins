@@ -1,16 +1,28 @@
 stages:
+  - build
   - deploy
 
+build:
+  stage: build
+  image: docker:latest
+  services:
+    - docker:dind
+  script:
+    - cd /home/pnaydenov/Downloads/devops-site
+    - docker build -t paolonayednov/dev:0.1 .
+    - docker login -u "$DOCKER_USER" -p "$DOCKER_PASS"
+    - docker push paolonaydenov/dev:0.1
+  only:
+    - master
 
 deploy:
   stage: deploy
   image: docker:latest
-  tags:
-    - docker
   variables:
-    DOCKER_IMAGE: "vesves4/pptt:0.0.1"
+    DOCKER_IMAGE: "paolonaydenov/dev:0.1"
   script:
-    - docker pull "vesves4/pptt:0.0.1"
-    - docker run -d --name devop -p 5173:5173 "vesves4/pptt:0.0.1"
+    - docker login -u "$DOCKER_USER" -p "$DOCKER_PASS"
+    - docker pull "paolonaydenov/dev:0.1"
+    - docker run -d --name devops -p 5173:5173 "$DOCKER_IMAGE"
   only:
-    - main
+    - master
