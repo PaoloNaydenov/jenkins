@@ -8,7 +8,6 @@ build:
   services:
     - docker:dind
   script:
-    - docker login -u "$DOCKER_USER" -p "$DOCKER_PASS"
     - docker build -t paolonayednov/dev:0.1 .
     - docker push paolonaydenov/dev:0.1
   tags:
@@ -22,7 +21,6 @@ deploy:
   variables:
     DOCKER_IMAGE: "paolonaydenov/dev:0.1"
   script:
-    - docker login -u "$DOCKER_USER" -p "$DOCKER_PASS"
     - docker pull "paolonaydenov/dev:0.1"
     - docker run -d --name devops -p 5173:5173 "$DOCKER_IMAGE"
   tags: 
