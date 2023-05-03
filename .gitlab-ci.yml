@@ -9,8 +9,8 @@ build:
   services:
     - docker:dind
   script:
-    - docker build -t $DOCKER_IMAGE .
-    - docker push $DOCKER_IMAGE
+    - docker build -t $CI_JOB_IMAGE .
+    - docker push $CI_JOB_IMAGE
   tags:
     - test docker shell
   only:
@@ -20,8 +20,8 @@ deploy:
   stage: deploy
   image: docker:latest
   script:
-    - docker pull "$DOCKER_IMAGE"
-    - docker run -d --name devops -p 5173:5173 "$DOCKER_IMAGE"
+    - docker pull "$CI_JOB_IMAGE"
+    - docker run -d --name devops -p 5173:5173 "$CI_JOB_IMAGE"
   tags: 
     - test docker shell
   only:
