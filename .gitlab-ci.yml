@@ -5,6 +5,8 @@ stages:
 build:
   stage: build
   image: docker:latest
+  tags:
+    - test
   services:
     - docker:dind
   script:
@@ -17,6 +19,8 @@ build:
 
 deploy:
   stage: deploy
+  tags:
+    - test
   image: docker:latest
   variables:
     DOCKER_IMAGE: "paolonaydenov/dev:0.1"
