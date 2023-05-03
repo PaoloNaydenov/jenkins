@@ -2,15 +2,16 @@ stages:
   - build
   - deploy
 
+before script:
+  - docker login -u "$DOCKER_USER" -p "$DOCKER_PASS"
+  
 build:
   stage: build
   image: docker:latest
   services:
     - docker:dind
   script:
-    - cd /home/pnaydenov/Downloads/devops-site
     - docker build -t paolonayednov/dev:0.1 .
-    - docker login -u "$DOCKER_USER" -p "$DOCKER_PASS"
     - docker push paolonaydenov/dev:0.1
   only:
     - main
