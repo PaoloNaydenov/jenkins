@@ -11,7 +11,7 @@ build:
     - docker build -t paolonayednov/dev:0.1 .
     - docker push paolonaydenov/dev:0.1
   tags:
-    - test
+    - test docker shell
   only:
     - main
 
@@ -24,6 +24,6 @@ deploy:
     - docker pull "paolonaydenov/dev:0.1"
     - docker run -d --name devops -p 5173:5173 "$DOCKER_IMAGE"
   tags: 
-    - test
+    - test docker shell
   only:
     - main
