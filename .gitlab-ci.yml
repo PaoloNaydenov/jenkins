@@ -1,7 +1,7 @@
 stages:
   - build
   - deploy
-before script:
+before_script:
   - docker login -u $DOCKER_USER -p $DOCKER_PASS
 build:
   stage: build
