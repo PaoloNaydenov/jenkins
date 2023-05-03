@@ -1,9 +1,6 @@
 stages:
   - build
   - deploy
-
-before script:
-  - docker login -u "$DOCKER_USER" -p "$DOCKER_PASS"
   
 build:
   stage: build
@@ -11,8 +8,11 @@ build:
   services:
     - docker:dind
   script:
+    - docker login -u "$DOCKER_USER" -p "$DOCKER_PASS"
     - docker build -t paolonayednov/dev:0.1 .
     - docker push paolonaydenov/dev:0.1
+  tags:
+    - test
   only:
     - main
 
