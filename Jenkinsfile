@@ -1,5 +1,5 @@
 pipeline {
-    agent { test { label 'test' } }
+    agent { node { label 'test' } }
     
     environment {
         
