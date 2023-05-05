@@ -14,7 +14,7 @@ pipeline {
               sh "docker login -u ${DOCKER_USER} -p ${DOCKER_PASS}"
                 }
             }
-        stages {
+        stage {
            stage('Build') { 
              steps {
                sh "docker build -t ${IMAGE}"
