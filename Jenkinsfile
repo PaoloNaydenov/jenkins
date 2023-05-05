@@ -1,5 +1,5 @@
 pipeline {
-    agent test
+    agent test }
     
     environment {
         
@@ -12,6 +12,7 @@ pipeline {
         stage('before job starts') {
             steps {
               "docker login -u ${DOCKER_USER} -p ${DOCKER_PASS}"
+                }
             }
         stages {
            stage('Build') { 
@@ -33,4 +34,3 @@ pipeline {
         }
     }
 }
-    }
