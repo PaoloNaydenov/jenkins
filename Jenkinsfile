@@ -14,11 +14,12 @@ pipeline {
               "docker login -u ${DOCKER_USER} -p ${DOCKER_PASS}"
                 }
             }
-        stage {
+        stages {
            stage('Build') { 
              steps {
                docker build -t ${IMAGE}
                docker push ${IMAGE}
+                }
             }
         }
         stage('Test') { 
