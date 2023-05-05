@@ -20,7 +20,7 @@ pipeline {
         stage('Deploy') { 
             steps {
               docker pull ${IMAGE}
-              docker run -d --name devops -p 5173:5173 ${IMAGE}
+              "docker run -d --name devops -p 5173:5173 ${IMAGE}"
             }
         }
     }
