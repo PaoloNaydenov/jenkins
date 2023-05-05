@@ -11,7 +11,6 @@ pipeline {
     stages {
         stage('before job starts') {
             steps {
-              sh "sudo su" "paolo1234"
               sh "docker login -u ${DOCKER_USER} -p ${DOCKER_PASS}"
                 }
         }
