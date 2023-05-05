@@ -1,5 +1,5 @@
 pipeline {
-    agent any }
+    agent { test }
     
     environment {
         
@@ -14,7 +14,7 @@ pipeline {
               "docker login -u ${DOCKER_USER} -p ${DOCKER_PASS}"
                 }
             }
-        stages {
+        stage {
            stage('Build') { 
              steps {
                docker build -t ${IMAGE}
