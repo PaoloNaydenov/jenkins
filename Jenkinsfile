@@ -1,5 +1,5 @@
 pipeline {
-    agent test }
+    agent any }
     
     environment {
         
