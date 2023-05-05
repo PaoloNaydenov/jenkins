@@ -6,6 +6,8 @@ pipeline {
         IMAGE = "paolonaydenov/dev:0.1"
         DOCKER_USER = "paolonaydenov
         DOCKER_PASS = "kus"
+    }
+    
     stages {
         stage('before job starts') {
             steps {
