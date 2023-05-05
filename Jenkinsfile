@@ -11,14 +11,14 @@ pipeline {
     stages {
         stage('before job starts') {
             steps {
-              "docker login -u ${DOCKER_USER} -p ${DOCKER_PASS}"
+              sh "docker login -u ${DOCKER_USER} -p ${DOCKER_PASS}"
                 }
             }
         stages {
            stage('Build') { 
              steps {
-               docker build -t ${IMAGE}
-               docker push ${IMAGE}
+               sh "docker build -t ${IMAGE}"
+               sh "docker push ${IMAGE}"
                 }
             }
         }
@@ -29,8 +29,8 @@ pipeline {
         }
         stage('Deploy') { 
             steps {
-              docker pull ${IMAGE}
-              "docker run -d --name devops -p 5173:5173 ${IMAGE}"
+              sh "docker pull ${IMAGE}"
+              sh "docker run -d --name devops -p 5173:5173 ${IMAGE}"
             }
         }
     }
