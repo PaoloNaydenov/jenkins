@@ -4,7 +4,7 @@ pipeline {
     environment {
         
         IMAGE = "paolonaydenov/dev:0.1"
-        DOCKER_USER = "paolonaydenov
+        DOCKER_USER = "paolonaydenov"
         DOCKER_PASS = "kus"
     }
     
