@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('before job starts') {
             steps {
-              docker login -u ${DOCKER_USER} -p ${DOCKER_PASS}
+              "docker login -u ${DOCKER_USER} -p ${DOCKER_PASS}"
             }
         stages {
            stage('Build') { 
