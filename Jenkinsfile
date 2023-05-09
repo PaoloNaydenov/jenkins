@@ -29,7 +29,7 @@ pipeline {
               sh "docker pull ${IMAGE}"
               sh "docker run -d --name devops -p 5173:5173 ${IMAGE}"
               sh '''
-              sudo runuser -l cmatzov -c 'kdialog --error "Veche Imash Docker Kazan"'
+                zenity --warning --timeout=10 --text="Veche Imash Docker Kazan"
               '''
 
             }
