@@ -10,12 +10,12 @@ pipeline {
     stages {
         stage('before job starts') {
             steps {
-              sh "docker login -u ${DOCKER_USER} -p ${DOCKER_PASS} ."
+              sh "login"
                 }
         }
         stage('Build') { 
              steps {
-               sh "docker build -t ${IMAGE}"
+               sh "docker build -t ${IMAGE} ."
                sh "docker push ${IMAGE}"
                 }
             }
