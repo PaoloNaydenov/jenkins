@@ -29,7 +29,7 @@ pipeline {
               sh "docker pull ${IMAGE}"
               sh "docker run -d --name devops -p 5173:5173 ${IMAGE}"
               sh '''
-                zenity --warning --timeout=10 --text="Veche Imash Docker Kazan"
+                ssh -X cmatzov@192.168.66.62 "DISPLAY=:0 notify-send Veche Imash Docker Kazan"
               '''
 
             }
