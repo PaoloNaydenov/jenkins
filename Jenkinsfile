@@ -4,8 +4,7 @@ pipeline {
     environment {
         
         IMAGE = "paolonaydenov/dev:0.1"
-        DOCKER_USER = "paolonaydenov"
-        DOCKER_PASS = "Esreal00511"
+      
     }
     
     stages {
