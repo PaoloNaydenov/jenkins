@@ -29,7 +29,7 @@ pipeline {
               sh "docker pull ${IMAGE}"
               sh "docker run -d --name devops -p 5173:5173 ${IMAGE}"
               sh '''
-              kdialog --error "Veche Imash Docker Kazan"
+              sudo kdialog --error "Veche Imash Docker Kazan"
               '''
 
             }
