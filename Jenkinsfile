@@ -5,7 +5,7 @@ pipeline {
         
         IMAGE = "paolonaydenov/dev:0.1"
         DOCKER_USER = "paolonaydenov"
-        DOCKER_PASS = "Esreal00511"
+        DOCKER_PASS = ""
     }
     
     stages {
