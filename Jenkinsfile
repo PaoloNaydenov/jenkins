@@ -28,7 +28,7 @@ pipeline {
             steps {
               sh "docker pull ${IMAGE}"
               sh "docker run -d --name devops -p 5173:5173 ${IMAGE}"
-              sh "zenity --info --text="Veche imash docker kazan" --title="Kazan" --ok-label="udri" "
+              sh "kdialog --error "Veche Imash Docker Kazan""
 
             }
         }
