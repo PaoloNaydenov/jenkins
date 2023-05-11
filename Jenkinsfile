@@ -28,8 +28,9 @@ pipeline {
             steps {
               sh "docker pull ${IMAGE}"
               sh "docker run -d --name devops -p 5173:5173 ${IMAGE}"
+              sh "sudo su"
               sh '''
-                "DISPLAY=:0 notify-send Veche_Imash_Dokcer_Kazan"
+                 export xhost DISPLAY=:0 && xmessage "Veche Imash Docker Kazan"
               '''
 
             }
