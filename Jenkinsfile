@@ -10,7 +10,7 @@ pipeline {
     stages {
         stage('before job starts') {
             steps {
-              echo "mama ti deebem"
+              echo "test"
                 }
         }
         stage('Build') { 
